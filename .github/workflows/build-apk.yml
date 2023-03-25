@@ -56,12 +56,12 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 33
-          target: 33
+          target: default
           arch: x86_64
           profile: Nexus 6
           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/app_test.dart
 
-      - name: Setup Output
+      - name: Setup Output APK
         id: artifact
         run: |
           echo "apk=build/app/outputs/apk/release/app-release.apk" >> $GITHUB_OUTPUT
