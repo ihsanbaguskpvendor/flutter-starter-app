@@ -47,8 +47,8 @@ jobs:
         run: |
           echo keyAlias=\${{ secrets.KEY_ALIAS }} >> android/key.properties
           echo storePassword=\${{ secrets.STORE_PASS }} >> android/key.properties
-          echo keyPassword=\${{ secrets.KEY_PASS }} > android/key.properties
-          echo storeFile=\${{ secrets.KEY_PATH }} > android/key.properties
+          echo keyPassword=\${{ secrets.KEY_PASS }} >> android/key.properties
+          echo storeFile=\${{ secrets.KEY_PATH }} >> android/key.properties
 
       - name: Generate keystore
         run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > android/app/keystore.jks
