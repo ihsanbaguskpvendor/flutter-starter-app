@@ -42,6 +42,16 @@ jobs:
         with:
           api-level: 29
           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
+
+      - name: Generate signed keystore
+        run: |
+          echo keyAlias=\${{ secrets.KEY_ALIAS }} >> android/key.properties
+          echo storePassword=\${{ secrets.STORE_PASS }} >> android/key.properties
+          echo keyPassword=\${{ secrets.KEY_PASS }} > android/key.properties
+          echo storeFile=\${{ secrets.KEY_PATH }} > android/key.properties
+
+      - name: Generate keystore
+        run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > ${{ secrets.KEY_PATH }}
         
       - name: Build APK
         run: flutter build apk
