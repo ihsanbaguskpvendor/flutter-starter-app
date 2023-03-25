@@ -17,15 +17,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@main
-        with:
-          cache: true
         
       - name: Setup Java
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
           java-version: '11'
-          cache: 'gradle'
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
@@ -44,7 +41,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          arc: arm64-v8a
+          arch: arm64-v8a
           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
         
       - name: Build APK
