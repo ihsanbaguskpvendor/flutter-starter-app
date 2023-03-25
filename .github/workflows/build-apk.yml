@@ -51,7 +51,7 @@ jobs:
           echo storeFile=\${{ secrets.KEY_PATH }} > android/key.properties
 
       - name: Generate keystore
-        run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > ${{ secrets.KEY_PATH }}
+        run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > android/app/keystore.jks
         
       - name: Build APK
         run: flutter build apk
