@@ -56,7 +56,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/app_test.dart
+          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
 
       - name: Setup Output APK
         id: artifact
