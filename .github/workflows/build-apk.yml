@@ -55,10 +55,7 @@ jobs:
       - name: Run integration tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
-          target: default
-          arch: x86_64
-          profile: Nexus 6
+          api-level: 29
           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/app_test.dart
 
       - name: Setup Output APK
