@@ -10,7 +10,7 @@ on:
 #         type: string
 #         default: TEST
 #         required: false
-  
+
 jobs:
   build:
     runs-on: macos-latest
