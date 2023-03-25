@@ -16,7 +16,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
         
       - name: Setup Java
         uses: actions/setup-java@v2
@@ -55,11 +55,15 @@ jobs:
 #           api-level: 29
 #           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/app_test.dart
 
+      - name: Setup Output
+        run: |
+          echo "artifact=build/app/outputs/apk/release/app-release.apk" >> $GITHUB_ENV
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: ${{ env.artifact }}
 
 #      - name: Upload Screenshoots
 #        uses: actions/upload-artifact@v3
