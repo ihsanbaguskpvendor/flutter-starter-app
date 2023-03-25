@@ -41,7 +41,6 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          arch: arm64-v8a
           script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
         
       - name: Build APK
