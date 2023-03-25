@@ -39,6 +39,12 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run integration tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
         
       - name: Build APK
         run: flutter build apk
@@ -51,12 +57,6 @@ jobs:
 #         with:
 #           token: ${{secrets.CODECOV_TOKEN}}
 #           file: coverage/lcov.info
-
-      - name: Run integration tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
 
       - name: Setup Output APK
         id: artifact
