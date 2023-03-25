@@ -29,6 +29,8 @@ jobs:
         with:
 #           flutter-version: '2.10.0' //use latest version
           channel: 'stable'
+          cache: true
+          run: flutter --version
 
       - name: Install dependencies
         run: flutter pub get
