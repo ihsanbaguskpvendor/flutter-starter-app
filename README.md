@@ -1,5 +1,9 @@
 # fluttercicd
 
+[![codecov](https://codecov.io/gh/ihsanbaguskpvendor/flutter-starter-app/branch/main/graph/badge.svg?token=2LHC891HAU)](https://codecov.io/gh/ihsanbaguskpvendor/flutter-starter-app)
+
+<img src="https://codecov.io/gh/ihsanbaguskpvendor/flutter-starter-app/branch/main/graphs/sunburst.svg?token=2LHC891HAU"/>
+
 Flutter CICD Project
 
 ## Getting Started
