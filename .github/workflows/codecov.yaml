@@ -1,4 +1,4 @@
-name: Flutter Build APK
+name: Flutter LCOV
 
 on:
   pull_request:
@@ -37,23 +37,39 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run integration tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
+#      - name: Run integration tests
+#        uses: reactivecircus/android-emulator-runner@v2
+#        with:
+#          api-level: 29
+#          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
 
       - name: Run unit tests
         run: flutter test --coverage
 
-      - name: Upload to code coverage
-        uses: codecov/codecov-action@v3
+#      - name: Upload to code coverage
+#        uses: codecov/codecov-action@v3
 #         with:
 #           token: ${{secrets.CODECOV_TOKEN}}
 #           file: coverage/lcov.info
-
-      - name: Upload Screenshoots
-        uses: actions/upload-artifact@v3
+      - name: LCOV
+        uses: Nef10/lcov-reporter-action@v0.3.0
         with:
-          name: Test result screenshots
-          path: screenshots/*.png
+#          github-token: ${{ secrets.TOKEN }}
+          lcov-file: coverage/lcov.info
+          pr_number: ${{ github.event.number }}
+#        uses: hrishikesh-kadam/setup-lcov@v1
+#      - name: Report code coverage
+#        uses: zgosalvez/github-actions-report-lcov@v3
+#        with:
+#          coverage-files: coverage/lcov.info
+#          minimum-coverage: 90
+#          artifact-name: code-coverage-report
+#          github-token: ${{ secrets.TOKEN }}
+#          working-directory: ./
+#          update-comment: true
+
+#      - name: Upload Screenshoots
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Test result screenshots
+#          path: screenshots/*.png
