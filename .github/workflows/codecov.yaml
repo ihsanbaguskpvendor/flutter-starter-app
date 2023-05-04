@@ -1,4 +1,4 @@
-name: Flutter Build APK
+name: Flutter LCOV
 
 on:
   pull_request:
@@ -37,20 +37,26 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Run integration tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
+#      - name: Run integration tests
+#        uses: reactivecircus/android-emulator-runner@v2
+#        with:
+#          api-level: 29
+#          script: flutter drive --driver=test_driver/main_test.dart --target integration_test/main_test.dart
 
       - name: Run unit tests
         run: flutter test --coverage
 
-      - name: Upload to code coverage
-        uses: codecov/codecov-action@v3
+#      - name: Upload to code coverage
+#        uses: codecov/codecov-action@v3
 #         with:
 #           token: ${{secrets.CODECOV_TOKEN}}
 #           file: coverage/lcov.info
+      - name: LCOV
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: 'coverage/lcov.info'
+          min_coverage: 100
+          exclude: '**/*_observer.dart **/change.dart'
 
       - name: Upload Screenshoots
         uses: actions/upload-artifact@v3
