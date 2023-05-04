@@ -1,7 +1,7 @@
 name: Flutter Build APK
 
 on:
-  push:
+  pull_request:
     branches:
       - main
   workflow_dispatch:
@@ -48,9 +48,9 @@ jobs:
 
       - name: Upload to code coverage
         uses: codecov/codecov-action@v3
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
-          file: coverage/lcov.info
+#         with:
+#           token: ${{secrets.CODECOV_TOKEN}}
+#           file: coverage/lcov.info
 
       - name: Upload Screenshoots
         uses: actions/upload-artifact@v3
