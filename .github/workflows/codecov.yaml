@@ -54,7 +54,7 @@ jobs:
       - name: LCOV
         uses: Nef10/lcov-reporter-action@v0.3.0
         with:
-          github-token: ${{ secrets.TOKEN }}
+#          github-token: ${{ secrets.TOKEN }}
           lcov-file: coverage/lcov.info
           pr_number: ${{ github.event.number }}
 #        uses: hrishikesh-kadam/setup-lcov@v1
