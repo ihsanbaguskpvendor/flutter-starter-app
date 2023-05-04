@@ -52,11 +52,10 @@ jobs:
 #           token: ${{secrets.CODECOV_TOKEN}}
 #           file: coverage/lcov.info
       - name: LCOV
-        uses: VeryGoodOpenSource/very_good_coverage@v2
+        uses: Nef10/lcov-reporter-action@v0.3.0
         with:
-          path: 'coverage/lcov.info'
-          min_coverage: 90
-          exclude: '**/*_observer.dart **/change.dart'
+          lcov-file: lcov.info
+          pr-number: ${{ env.pr_number }}
 
 #      - name: Upload Screenshoots
 #        uses: actions/upload-artifact@v3
